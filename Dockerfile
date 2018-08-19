@@ -3,6 +3,8 @@ ENV INITSYSTEM on
 
 LABEL maintainer="xnorpx@outlook.com"
 
+RUN [ "cross-build-start" ]
+
 RUN apt-get update && apt-get install -yq --no-install-recommends \
 build-essential \
 cmake \
@@ -54,3 +56,4 @@ RUN wget -q https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
 && make install \
 && rm /${OPENCV_VERSION}.zip \
 && rm -r /opencv-${OPENCV_VERSION}
+RUN [ "cross-build-end" ]
