@@ -52,7 +52,7 @@ RUN wget -q https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
   -DBUILD_PERF_TESTS=OFF \
   -DINSTALL_PYTHON_EXAMPLES=OFF \
   .. \
-&& make -j64 -s \
+&& make -j make -j $(python -c "import multiprocessing as mp; print(int(mp.cpu_count() * 1.5))") -s \
 && make install \
 && rm /${OPENCV_VERSION}.zip \
 && rm -r /opencv-${OPENCV_VERSION}
