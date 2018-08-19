@@ -3,6 +3,7 @@ ENV INITSYSTEM on
 
 LABEL maintainer="xnorpx@outlook.com"
 
+# Comment out Cross build if you are compiling on arm (resin/rp etc)
 RUN [ "cross-build-start" ]
 
 RUN apt-get update && apt-get install -yq --no-install-recommends \
@@ -56,4 +57,5 @@ RUN wget -q https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
 && make install \
 && rm /${OPENCV_VERSION}.zip \
 && rm -r /opencv-${OPENCV_VERSION}
+# Comment out Cross build if you are compiling on arm (resin/rp etc)
 RUN [ "cross-build-end" ]
